@@ -82,10 +82,10 @@
 
             <c:forEach var="list" items="${list}">
             <tr>
-                <td class="td">  <input type="radio" /> </td>
+                <td class="td">  <input type="checkbox" name="box" value="${list.id}">  </td>
                 <td class="td">${list.type_name}</td>
                 <td class="td"width="70px">${list.price}</td>
-                <td class="i" > <input type="text" name="quv" maxlength="2"  size="14"  width="20px"/></td>
+                <td class="i"> <input type="text" name="q" maxlength="2"  size="14"  width="20px"/></td>
             </tr>
             </c:forEach>
             <tr>

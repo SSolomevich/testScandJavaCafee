@@ -114,21 +114,26 @@
 
 
 <div>
-    <table class="table2">
+    <table >
         <tr>
-            <td class="noInput2" width="50px">ID</td>
-            <td class="noInput2" width="150px">Activity</td>
-            <td class="noInput2" width="50px">Date</td>
-        </tr>
-        <c:forEach items="${users}" var="performer">
-            <tr>
-                <td class="input2"> ${performer.id}</td>
-                <td class="input2">${performer.activity}</td>
 
+            <th class="th" width="100px">Название</th>
+            <th class="th" width="50px">Цена</th>
+            <th class="th" width="40px">Количество</th>
+            <th class="th" width="20px">Всего </th>
+        </tr>
+        <c:forEach items="${type}" var="type">
+            <tr>
+                <td class="input2">${type.type_name}</td>
+                <td class="input2">${type.price}</td>
+                <td class="input2">${type.quantity}</td>
+                <td class="input2">${type.quantity*type.price}</td>
+                <%--<td></td>--%>
             </tr>
         </c:forEach>
     </table>
 </div>
+
 
 </body>
 </html>
