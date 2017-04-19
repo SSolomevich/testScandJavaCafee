@@ -85,6 +85,8 @@
     </style>
 </head>
 <body>
+<form action="CoffeeOrderController" method="post">
+
 <div class="table">
     <table>
         <tr>
@@ -96,11 +98,11 @@
 
             <tr>
                 <td class="td">  ФИО </td>
-                <td class="i" > <input type="text" name="Reg_login" maxlength="2"  size="14"  class="i2"/></td>
+                <td class="i" > <input type="text" name="NameAndFamily" maxlength="50"  size="14"  class="i2"/></td>
             </tr>
         <tr>
             <td class="td">  Адрес </td>
-            <td class="i" > <input type="text" name="Reg_login" maxlength="2"  size="14"  class="i2"/></td>
+            <td class="i" > <input type="text" name="Address" maxlength="50"  size="14"  class="i2"/></td>
         </tr>
         <tr>
 
@@ -108,15 +110,13 @@
 
             <td class="td2"> <input type="submit" name="success" value="Заказать" class="input"> </td>
         </tr>
-
     </table>
 </div>
+<br>
 
-
-<div>
+<div class="table">
     <table >
         <tr>
-
             <th class="th" width="100px">Название</th>
             <th class="th" width="50px">Цена</th>
             <th class="th" width="40px">Количество</th>
@@ -124,16 +124,15 @@
         </tr>
         <c:forEach items="${type}" var="type">
             <tr>
-                <td class="input2">${type.type_name}</td>
-                <td class="input2">${type.price}</td>
-                <td class="input2">${type.quantity}</td>
-                <td class="input2">${type.quantity*type.price}</td>
-                <%--<td></td>--%>
+                <td class="td2" width="100px">${type.type_name}</td>
+                <td class="td2" width="50px">${type.price}</td>
+                <td class="td2" width="40px">${type.quantity}</td>
+                <td class="td2" width="20px">${type.quantity*type.price}</td>
             </tr>
         </c:forEach>
     </table>
 </div>
 
-
+</form>
 </body>
 </html>

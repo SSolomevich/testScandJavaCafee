@@ -16,13 +16,14 @@ import java.util.*;
 /**
  * Created by Sergey Solomevich on 13.04.2017.
  */
-public class MyController extends Dispatcher {
+public class CoffeeTypeController extends Dispatcher {
 
     //  Создано 2 метода - гет и пост
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher view = req.getRequestDispatcher("/coffeeType.jsp");
 
-        Set<CoffeeType> set1 = new HashSet<>();
+//        Set<CoffeeType> set1 = new HashSet<>();
+        List<CoffeeType> set1 = new LinkedList<>();
         for (int i = 0; i< CoffeeTypeDao.list.size(); i++)
         {
             if (CoffeeTypeDao.list.get(i).getDisabled()!='Y')
@@ -42,18 +43,8 @@ public class MyController extends Dispatcher {
         List<String> list1 = new LinkedList<>();
         List<String> list2 = new LinkedList<>();
 
-
         String[] coffeIds = request.getParameterValues("box");
         String[] coffeQ = request.getParameterValues("q");
-//        int len = coffeQ.length>coffeIds.length?coffeIds.length:coffeQ.length;
-//        for (int a=0;a<len;a++)
-//        {
-////            if (coffeIds[a]!=null&&!coffeQ[a].isEmpty()&&!coffeQ[a].equals(null)&&coffeQ[a]!=null)
-////            {
-//                list1.add(coffeIds[a]);
-//                list2.add(coffeQ[a]);
-////            }
-//        }
 
         for (int a=0;a<coffeIds.length;a++) {
         list1.add(coffeIds[a]);
@@ -61,8 +52,8 @@ public class MyController extends Dispatcher {
         for (int a=0;a<coffeQ.length;a++) {
             list2.add(coffeQ[a]);
         }
-        List<String> list3 = new LinkedList<>();
 
+        List<String> list3 = new LinkedList<>();
         for (int i=0;i<list2.size();i++)
         {
             for (int j=0;j<list1.size();j++)
@@ -75,31 +66,24 @@ public class MyController extends Dispatcher {
             }
         }
 
-
-
         int len2 = list1.size()>list3.size()?list3.size():list1.size();
-if (list3.size()>0) {
-    for (int j = 0; j < CoffeeTypeDao.list.size(); j++) {
-//        for (int i = 0; i < coffeIds.length; i++) {
-        for (int i = 0; i < len2; i++) {
-            if (list1.get(i).equals(String.valueOf(CoffeeTypeDao.list.get(j).getId()))
+        if (list3.size()>0) {
+            for (int j = 0; j < CoffeeTypeDao.list.size(); j++) {
+                for (int i = 0; i < len2; i++) {
+                   if (list1.get(i).equals(String.valueOf(CoffeeTypeDao.list.get(j).getId()))
                     ) {
 
-                if (!list2.get(Integer.parseInt(list1.get(i))-1).isEmpty())
-                {
-
-
-                listResult.add(new CoffeeOrder(CoffeeTypeDao.list.get(j).getId(),
-                        CoffeeTypeDao.list.get(j).getType_name(),
-                        CoffeeTypeDao.list.get(j).getPrice(),
-                        Integer.parseInt(list3.get(i))
-//                        Integer.parseInt(coffeQ[i])
-//                        Integer.parseInt(coffeQ1)
-                ));
-            }
-        }
-    }
-    }
+                        if (!list2.get(Integer.parseInt(list1.get(i))-1).isEmpty())
+                         {
+                            listResult.add(new CoffeeOrder(CoffeeTypeDao.list.get(j).getId(),
+                            CoffeeTypeDao.list.get(j).getType_name(),
+                            CoffeeTypeDao.list.get(j).getPrice(),
+                            Integer.parseInt(list3.get(i))
+                              ));
+                           }
+                       }
+                  }
+             }
 }
 //  устанавливаем listResult для ответа на соответствующее обращение из jsp
         request.setAttribute("type", listResult);
