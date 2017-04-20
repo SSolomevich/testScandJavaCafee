@@ -23,7 +23,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>CoffeeTypeController</servlet-name>
-        <url-pattern></url-pattern>
+        <url-pattern>/CoffeeTypeController</url-pattern>
     </servlet-mapping>
 
 

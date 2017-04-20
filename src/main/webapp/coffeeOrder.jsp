@@ -134,5 +134,6 @@
 </div>
 
 </form>
+<a href="CoffeeTypeController">Вернуться в магазин </a>
 </body>
 </html>

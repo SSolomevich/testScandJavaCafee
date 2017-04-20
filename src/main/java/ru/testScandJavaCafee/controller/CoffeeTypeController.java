@@ -22,7 +22,7 @@ public class CoffeeTypeController extends Dispatcher {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher view = req.getRequestDispatcher("/coffeeType.jsp");
 
-//        Set<CoffeeType> set1 = new HashSet<>();
+
         List<CoffeeType> set1 = new LinkedList<>();
         for (int i = 0; i< CoffeeTypeDao.list.size(); i++)
         {

@@ -70,7 +70,7 @@
 </head>
 <body>
 
-<form action="" method="post">
+<form action="CoffeeTypeController" method="post">
     <div class="table">
         <table>
             <tr>
