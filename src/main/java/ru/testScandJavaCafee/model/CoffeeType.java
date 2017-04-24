@@ -11,7 +11,27 @@ public class CoffeeType {
 
     private double price;
 
-    private char disabled;
+    private String disabled;
+
+    private int count;
+
+    private boolean check;
+
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 
     public CoffeeType() {
     }
@@ -40,15 +60,15 @@ public class CoffeeType {
         this.price = price;
     }
 
-    public char getDisabled() {
+    public String getDisabled() {
         return disabled;
     }
 
-    public void setDisabled(char disabled) {
+    public void setDisabled(String disabled) {
         this.disabled = disabled;
     }
 
-    public CoffeeType(int id, String type_name, double price, char disabled) {
+    public CoffeeType(int id, String type_name, double price, String disabled) {
         this.id = id;
         this.type_name = type_name;
         this.price = price;

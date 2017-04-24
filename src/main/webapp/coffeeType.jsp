@@ -89,10 +89,7 @@
             </tr>
             </c:forEach>
             <tr>
-                <td class="td"> </td>
-                <td class="td"> </td>
-                <td class="td"> </td>
-                <td class="td"> <input type="submit" name="success" value="Заказать" class="input"> </td>
+                <td class="td" colspan="4"> <input type="submit" name="success" value="Заказать" class="input"> </td>
             </tr>
 
         </table>

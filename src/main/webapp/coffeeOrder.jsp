@@ -122,14 +122,22 @@
             <th class="th" width="40px">Количество</th>
             <th class="th" width="20px">Всего </th>
         </tr>
-        <c:forEach items="${type}" var="type">
+        <c:forEach var="list" items="${list}">
             <tr>
-                <td class="td2" width="100px">${type.type_name}</td>
-                <td class="td2" width="50px">${type.price}</td>
-                <td class="td2" width="40px">${type.quantity}</td>
-                <td class="td2" width="20px">${type.quantity*type.price}</td>
+                <td class="td2" width="100px">${list.type_name}</td>
+                <td class="td2" width="50px">${list.price}</td>
+                <td class="td2" width="40px">${list.count}</td>
+                <td class="td2" width="20px">${list.count*list.price}</td>
             </tr>
         </c:forEach>
+        <%--<c:forEach items="${type}" var="type">--%>
+            <%--<tr>--%>
+                <%--<td class="td2" width="100px">${type.type_name}</td>--%>
+                <%--<td class="td2" width="50px">${type.price}</td>--%>
+                <%--<td class="td2" width="40px">${type.quantity}</td>--%>
+                <%--<td class="td2" width="20px">${type.quantity*type.price}</td>--%>
+            <%--</tr>--%>
+        <%--</c:forEach>--%>
     </table>
 </div>
 

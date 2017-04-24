@@ -34,13 +34,12 @@ public class CoffeeOrderController extends Dispatcher  {
     public void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        if (!request.getParameter("NameAndFamily").isEmpty()
-                && !request.getParameter("Address").isEmpty()
+        if (!request.getParameter("Address").isEmpty()
                 ) {
 //            response.sendRedirect("/successOrder.jsp");
             request.getRequestDispatcher("/successOrder.jsp").forward(request, response);
         }
-//        else  request.getRequestDispatcher("/CoffeeTypeController").forward(request, response);
+        else  request.getRequestDispatcher("/coffeeOrder.jsp").forward(request, response);
     }
 
 }
