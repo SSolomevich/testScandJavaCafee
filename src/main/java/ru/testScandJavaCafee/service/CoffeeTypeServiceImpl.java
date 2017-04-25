@@ -10,9 +10,12 @@ import java.util.List;
  * Created by 15 on 25.04.2017.
  */
 public class CoffeeTypeServiceImpl implements CoffeeTypeService {
+
+    CoffeeTypeDaoImpl coffeeTypeDao = new CoffeeTypeDaoImpl();
+
     @Override
     public List<CoffeeType> getListCoffeeType(String[] count) {
-        List<CoffeeType> list = CoffeeTypeDaoImpl.list;
+        List<CoffeeType> list = coffeeTypeDao.list;
         for (int i = 0; i< list.size(); i++) {
             CoffeeType item = list.get(i);
 //            if(req.getParameterValues("box["+item.getId()+"]")){
@@ -45,8 +48,8 @@ public class CoffeeTypeServiceImpl implements CoffeeTypeService {
         List<CoffeeType> list2=new ArrayList<>();
         if (checkbox!=null&&checkbox.length>0) {
             for (int i = 0; i < checkbox.length; i++) {
-                for (int j = 0; j < CoffeeTypeDaoImpl.list.size(); j++) {
-                    if (checkbox[i].equals(String.valueOf(CoffeeTypeDaoImpl.list.get(j).getId()))
+                for (int j = 0; j < coffeeTypeDao.list.size(); j++) {
+                    if (checkbox[i].equals(String.valueOf(coffeeTypeDao.list.get(j).getId()))
                             && list.get(j).getCount()!=0
                             ) {
                         list2.add(list.get(j));

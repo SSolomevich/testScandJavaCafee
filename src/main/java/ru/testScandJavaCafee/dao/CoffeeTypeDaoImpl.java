@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by 15 on 23.04.2017.
  */
-public class CoffeeTypeDaoImpl {
+public class CoffeeTypeDaoImpl implements CoffeeTypeDao{
 
 //    public static List<CoffeeType> list = Arrays.asList(
 //            new CoffeeType(1, "Очень крепкий и горячий кофе.", 20, 'X'),
@@ -17,7 +17,7 @@ public class CoffeeTypeDaoImpl {
 //            new CoffeeType(4, "Не важно, его всё равно не видно в меню.", 120, 'Y'));
 
 
-        public static List<CoffeeType>  list = createListFromMysql(new ArrayList<>());
+        public  List<CoffeeType>  list = createListFromMysql(new ArrayList<>());
         // JDBC URL, username и password of MySQL server
         private static final String url = "jdbc:mysql://localhost:3306/test_scand_caffe";
         private static final String user = "root";
@@ -28,7 +28,7 @@ public class CoffeeTypeDaoImpl {
         private static Statement stmt;
         private static ResultSet rs;
 
-        public static List<CoffeeType> createListFromMysql(
+        public  List<CoffeeType> createListFromMysql(
                 List<CoffeeType> list
         ) {
 
