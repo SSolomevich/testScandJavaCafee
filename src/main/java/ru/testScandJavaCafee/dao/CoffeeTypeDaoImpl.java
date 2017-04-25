@@ -36,6 +36,9 @@ public class CoffeeTypeDaoImpl {
 
             try {
 // opening database connection to MySQL server
+
+//                DriverManager.registerDriver(DB.getActualDriver(config.getDbType));
+
                 DriverManager.registerDriver(new com.mysql.jdbc.Driver ());
                 con = DriverManager.getConnection(url, user, password);
 

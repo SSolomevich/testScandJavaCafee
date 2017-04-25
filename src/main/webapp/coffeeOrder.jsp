@@ -49,11 +49,13 @@
         {
             font-family: "Times New Roman", sans-serif;
             font-size: 14px;
-            /*padding: 10px ;*/
-            /*height: 40px;*/
-            /*width: 150px;*/
-
             text-align: right;
+        }
+        .td3
+        {
+            font-family: "Times New Roman", sans-serif;
+            font-size: 14px;
+            text-align: left;
         }
         .i
         {
@@ -87,8 +89,8 @@
 <div class="table">
     <table cellspacing="0px" cellpadding="2px" border="0px">
         <tr>
-            <td class="th"> </td>
-            <th class="th" >Доставка</th>
+
+            <th class="th" colspan="2">Доставка</th>
 
         </tr>
 
@@ -121,7 +123,7 @@
         </tr>
         <c:forEach var="list" items="${list}">
             <tr>
-                <td class="td2" align="left" >${list.type_name}</td>
+                <td class="td3" >${list.type_name}</td>
                 <td class="td2" >${list.price} TGR</td>
                 <td class="td2" >${list.count}</td>
                 <td class="td2" >${list.count*list.price} TGR</td>

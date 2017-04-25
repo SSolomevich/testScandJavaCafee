@@ -2,6 +2,7 @@ package ru.testScandJavaCafee.controller;
 
 import ru.testScandJavaCafee.dao.CoffeeTypeDao;
 import ru.testScandJavaCafee.model.CoffeeType;
+import ru.testScandJavaCafee.service.CoffeeTypeServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,26 +19,15 @@ import java.util.List;
 public class CoffeeOrderController extends Dispatcher  {
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        RequestDispatcher view = req.getRequestDispatcher("/coffeeType.jsp");
         req.getRequestDispatcher("/CoffeeTypeController").forward(req, resp);
-//        List<CoffeeType> set1 = new LinkedList<>();
-//        for (int i = 0; i< CoffeeTypeDao.list.size(); i++)
-//        {
-//            if (CoffeeTypeDao.list.get(i).getDisabled()!='Y')
-//                set1.add(CoffeeTypeDao.list.get(i));
-//        }
-//        req.setAttribute("list", set1);
-//
-//        view.forward(req, resp);
     }
 
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         if (!request.getParameter("Address").isEmpty()
                 ) {
-//            response.sendRedirect("/successOrder.jsp");
+
             insert(request);
             request.getRequestDispatcher("/successOrder.jsp").forward(request, response);
 
@@ -50,8 +40,7 @@ public class CoffeeOrderController extends Dispatcher  {
 
         String name = request.getParameter("NameAndFamily");
         String delivery_address = request.getParameter("Address");
-//        String cost =
-//                request.getParameter("$list.price");
+
 
 
         // JDBC URL, username и password of MySQL server
@@ -74,8 +63,8 @@ public class CoffeeOrderController extends Dispatcher  {
 //
 //
 
-            for (int i=0; i<CoffeeTypeController.c.size();i++) {
-                stmt.executeUpdate("INSERT INTO coffeeorder(order_date,name,delivery_address,cost) VALUES (NOW(),'" + name + "', '" + delivery_address + "','" + CoffeeTypeController.c.get(i) + "' )");
+            for (int i = 0; i< CoffeeTypeServiceImpl.c.size(); i++) {
+                stmt.executeUpdate("INSERT INTO coffeeorder(order_date,name,delivery_address,cost) VALUES (NOW(),'" + name + "', '" + delivery_address + "','" + CoffeeTypeServiceImpl.c.get(i) + "' )");
             }
             stmt.close();
         con.close();

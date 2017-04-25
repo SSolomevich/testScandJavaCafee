@@ -28,8 +28,10 @@
             /*padding: 10px ;*/
             /*height: 40px;*/
             /*width: 150px;*/
-            background-color: lightgray;
+
             text-align: center;
+            background-color: #C0C0C7;
+
         }
 
 
@@ -51,38 +53,27 @@
             /*padding: 10px ;*/
             /*height: 40px;*/
             /*width: 150px;*/
-            background-color: gainsboro;
-            text-align: right;
-        }
-        .i
-        {
-            font-family: "Times New Roman", sans-serif;
-            font-size: 14px;
-            height: 20px;
-            width: 210px;
-            background-color: gainsboro;
+
             text-align: center;
         }
-        .i2
-        {
-            font-family: "Times New Roman", sans-serif;
-            font-size: 14px;
-            height: 20px;
-            width: 200px;
-            text-align: center;
+        tr:nth-child(2n) {
+            background: #f0f0f0;/* Цвет фона */
+        }
+        tr:nth-child(2n+1) {
+            background:  #E0E0E0; /* Цвет фона */
         }
     </style>
 </head>
 <body>
-<h1>Заказ принят!</h1>
+
 <form action="CoffeeOrderController" method="post">
 <div class="table">
-    <table>
+    <table cellspacing="0px" cellpadding="2px" border="0px">
         <tr>
-            <th class="th" width="100px">Подтверждение</th>
+            <th class="th" width="300px">Подтверждение</th>
         </tr>
         <tr>
-            <td class="td2" width="100px">Ваш заказ принят</td>
+            <td class="td2" >Ваш заказ принят</td>
         </tr>
     </table>
 </div>
