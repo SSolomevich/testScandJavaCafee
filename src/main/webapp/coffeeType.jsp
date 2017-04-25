@@ -21,6 +21,7 @@
             color: #333;
             line-height: 2px;
             border: 3px;
+
         }
         .th
         {
@@ -30,7 +31,7 @@
             /*padding: 10px ;*/
              /*height: 40px;*/
              /*width: 150px;*/
-            background-color: lightgray;
+            background-color: #C0C0C7 ;
             text-align: center;
         }
         .td
@@ -40,8 +41,13 @@
             /*padding: 10px ;*/
             /*height: 40px;*/
             /*width: 150px;*/
-            background-color: gainsboro;
-            text-align: center;
+            /*text-align: center;*/
+        }
+        tr:nth-child(2n) {
+            background: #f0f0f0; /* Цвет фона */
+        }
+        tr:nth-child(2n+1) {
+            background: #E0E0E0; /* Цвет фона */
         }
         .i
         {
@@ -49,7 +55,6 @@
             font-size: 14px;
             height: 20px;
             width: 20px;
-            background-color: gainsboro;
             text-align: center;
         }
         .p1
@@ -71,8 +76,8 @@
 <body>
 
 <form action="CoffeeTypeController" method="post">
-    <div class="table">
-        <table>
+    <div class="table" >
+        <table cellspacing="0px" cellpadding="2px" border="0px">
             <tr>
                 <th class="th" width="20px"> </th>
                 <th class="th" width="100px">Название</th>
@@ -82,14 +87,14 @@
 
             <c:forEach var="list" items="${list}">
             <tr>
-                <td class="td">  <input type="checkbox" name="box" value="${list.id}">  </td>
-                <td class="td">${list.type_name}</td>
-                <td class="td"width="70px">${list.price}</td>
+                <td class="td" align="center">  <input type="checkbox" name="box" value="${list.id}">  </td>
+                <td class="td" align="left">${list.type_name}</td>
+                <td class="td"width="70px" align="left">${list.price} TGR</td>
                 <td class="i"> <input type="text" name="q" maxlength="2"  size="14"  width="20px"/></td>
             </tr>
             </c:forEach>
             <tr>
-                <td class="td" colspan="4"> <input type="submit" name="success" value="Заказать" class="input"> </td>
+                <td class="td" colspan="4" align="right"> <input type="submit" name="success" value="Заказать" class="input"> </td>
             </tr>
 
         </table>

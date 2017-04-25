@@ -29,7 +29,7 @@
             /*padding: 10px ;*/
             /*height: 40px;*/
             /*width: 150px;*/
-            background-color: lightgray;
+            background-color: #C0C0C7;
             text-align: center;
         }
 
@@ -42,7 +42,7 @@
             /*padding: 10px ;*/
             /*height: 40px;*/
             /*width: 150px;*/
-            background-color: gainsboro;
+
             text-align: center;
         }
         .td2
@@ -52,7 +52,7 @@
             /*padding: 10px ;*/
             /*height: 40px;*/
             /*width: 150px;*/
-            background-color: gainsboro;
+
             text-align: right;
         }
         .i
@@ -61,7 +61,7 @@
             font-size: 14px;
             height: 20px;
             width: 210px;
-            background-color: gainsboro;
+
             text-align: center;
         }
         .i2
@@ -72,23 +72,20 @@
             width: 200px;
             text-align: center;
         }
+        tr:nth-child(2n) {
+            background: #f0f0f0; /* Цвет фона */
+        }
+        tr:nth-child(2n+1) {
+            background: #E0E0E0; /* Цвет фона */
+        }
 
-        .p1
-        {
-            color: red;
-            font-size: 14px;
-        }
-        .p2
-        {
-            font-size: 14px;
-        }
     </style>
 </head>
 <body>
 <form action="CoffeeOrderController" method="post">
 
 <div class="table">
-    <table>
+    <table cellspacing="0px" cellpadding="2px" border="0px">
         <tr>
             <td class="th"> </td>
             <th class="th" >Доставка</th>
@@ -100,8 +97,8 @@
                 <td class="td">  ФИО </td>
                 <td class="i" > <input type="text" name="NameAndFamily" maxlength="50"  size="14"  class="i2"/></td>
             </tr>
-        <tr>
-            <td class="td">  Адрес </td>
+        <tr style="background-color: #F0F0F0">
+            <td class="td" >  Адрес </td>
             <td class="i" > <input type="text" name="Address" maxlength="50"  size="14"  class="i2"/></td>
         </tr>
         <tr>
@@ -115,19 +112,19 @@
 <br>
 
 <div class="table">
-    <table >
+    <table cellspacing="0px" cellpadding="2px" border="0px">
         <tr>
-            <th class="th" width="100px">Название</th>
+            <th class="th" width="220px">Название</th>
             <th class="th" width="50px">Цена</th>
             <th class="th" width="40px">Количество</th>
-            <th class="th" width="20px">Всего </th>
+            <th class="th" width="60px">Всего </th>
         </tr>
         <c:forEach var="list" items="${list}">
             <tr>
-                <td class="td2" width="100px">${list.type_name}</td>
-                <td class="td2" width="50px">${list.price}</td>
-                <td class="td2" width="40px">${list.count}</td>
-                <td class="td2" width="20px">${list.count*list.price}</td>
+                <td class="td2" align="left" >${list.type_name}</td>
+                <td class="td2" >${list.price} TGR</td>
+                <td class="td2" >${list.count}</td>
+                <td class="td2" >${list.count*list.price} TGR</td>
             </tr>
         </c:forEach>
         <%--<c:forEach items="${type}" var="type">--%>

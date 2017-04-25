@@ -79,10 +79,10 @@
 <div class="table">
     <table>
         <tr>
-            <th class="th">Подтверждение</th>
+            <th class="th" width="100px">Подтверждение</th>
         </tr>
         <tr>
-            <td class="td2">Ваш заказ принят</td>
+            <td class="td2" width="100px">Ваш заказ принят</td>
         </tr>
     </table>
 </div>

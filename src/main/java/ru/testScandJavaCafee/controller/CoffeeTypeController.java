@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.*;
 
 /**
@@ -38,6 +39,7 @@ public class CoffeeTypeController extends Dispatcher {
         }
         return list;
     }
+public static ArrayList<Double> c =new ArrayList<>();
 
     private List<CoffeeType> getListCoffeeOrder(List<CoffeeType> list, String[] checkbox){
         List<CoffeeType> list2=new ArrayList<>();
@@ -48,6 +50,7 @@ public class CoffeeTypeController extends Dispatcher {
                     && list.get(j).getCount()!=0
                             ) {
                         list2.add(list.get(j));
+                        c.add(list.get(j).getPrice());
                     }
                 }
             }
