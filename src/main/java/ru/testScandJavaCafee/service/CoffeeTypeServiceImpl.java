@@ -42,7 +42,8 @@ public class CoffeeTypeServiceImpl implements CoffeeTypeService {
     }
 
 
-    public static ArrayList<Double> c =new ArrayList<>();
+    public static ArrayList<Double> c = new ArrayList<>();
+
     @Override
     public List<CoffeeType> getListCoffeeOrder(List<CoffeeType> list, String[] checkbox) {
         List<CoffeeType> list2=new ArrayList<>();
