@@ -16,7 +16,7 @@ public class CoffeeTypeDaoImpl {
     public  List<CoffeeType>  list = createListFromMysql(new ArrayList<>());
     // JDBC URL, username и password of MySQL server
     private static final String url = "jdbc:mysql://localhost:3306/test_scand_caffe";
-    private static final String url2 = "jdbc:postgresql://127.0.0.1:5432/test_scand_caffe";
+    private static final String url2 = "test_scand_caffe";
     private static final List<String> listUrl = Arrays.asList(
             "jdbc:mysql://localhost:3306/test_scand_caffe",
             "jdbc:postgresql://127.0.0.1:5432/test_scand_caffe"
@@ -41,14 +41,14 @@ public class CoffeeTypeDaoImpl {
     private  final  int  ACTIVE    = 5;   //  флаг активности
 
     private static String[][]  params    =
-            {{"localhost"           , ""  , "root", "root", "MySQL"   , "true"},  // mysql
-            {"127.0.0.1"            , ""  , "login", "password", "Postgres", "true"}  // postgres
+            {{"localhost"           , "test_scand_caffe"  , "root", "root", "MySQL"   , "true"},  // mysql
+            {"127.0.0.1"            , ""  , "login", "password", "Postgres", "а"}  // postgres
 //            {"localhost\\SQLEXPRESS", ""  , "login", "password", "MS SQL"  , "true"},  // mssql
 //            {"localhost"            , "XE", "login", "password", "Oracle"  , "true"},  // oracle
 //            {""                     , "db", ""     , ""        , "Derby"   , "true"} // derby
             };
 
-    private  final  int [] ports    = {3306, 5432, 1433, 1521, 0};    // порты СУБД
+    private  final static int [] ports    = {3306, 5432, 1433, 1521, 0};    // порты СУБД
 
     private  final  int  idx_postgres = 1;
     private  final  int  idx_mssql    = 2;
@@ -62,16 +62,11 @@ public class CoffeeTypeDaoImpl {
      * @param dao модуль доступа
      * @param idx идентификатор сервера СУБД
      */
-    private void createConnecion (dao_base dao, final int idx) {
+    private void createConnecion (dao_base dao,  final int idx) {
         // Формирование строки подключения
-
         dao.setURL(params[idx][HOST], params[idx][SCHEMA], ports[idx]);
-
-
-//        dao.url="jdbc:mysql://localhost:3306/test_scand_caffe";
         // Подключение к серверу
         dao.Connect(params[idx][LOGIN], params[idx][PWD]);
-
     }
 
     public  List<CoffeeType> createListFromMysql(
@@ -103,25 +98,18 @@ public class CoffeeTypeDaoImpl {
 //                    case 3 : dm = new dao_oracle  (); break;
 //                    case 4 : dm = new dao_derby   (); break;
                 }
-
-
-                    // Проверка создания dm
-
-                        // Подключение к серверу БД
-//                        createConnecion(dm, i);
-                        // Вывод в консоль информации о подключении
-
-
-                            // Создание схемы и таблицы
                             try {
+                                // Проверка создания dm
+                                if (dm != null) {
+                                    // Подключение к серверу БД
+                                    createConnecion(dm, i);
+                                    // Вывод в консоль информации о подключении
+                                    if (dm.getConnection() != null) {
+                                        System.out.println(params[i][DBMS] + " ПОДКЛЮЧЕНА!!!");
+                                    }
 
-//                                con = DriverManager.getConnection(url, user, password);
 // getting Statement object to execute query
-                                dm.url=url;
-                                dm.Connect(user, password);
-//                                con =dm.getConnection();
-                               dm.RegisterDriverManager();
-//                                DriverManager.registerDriver(new com.mysql.jdbc.Driver ());
+                                dm.RegisterDriverManager();
                                 con = dm.getConnection();
                                 stmt = con.createStatement();
 
@@ -130,17 +118,16 @@ public class CoffeeTypeDaoImpl {
 
                                 while (rs.next()) {
                                     CoffeeType coffeeType = new CoffeeType();
-
                                     coffeeType.setId(rs.getInt("id"));
                                     coffeeType.setType_name(rs.getString("type_name"));
                                     coffeeType.setPrice(rs.getDouble("price"));
                                     coffeeType.setDisabled(rs.getString("disabled"));
-
                                     list.add(coffeeType);
                                 }
+                                }
+
                             } catch (SQLException sqlEx) {
                                 sqlEx.printStackTrace();
-
                             } finally {
 //close connection ,stmt and resultset here
                                 try {
@@ -153,16 +140,12 @@ public class CoffeeTypeDaoImpl {
                                     rs.close();
                                 } catch (SQLException se) { /*can't do anything */ }
                             }
-
                 return list;
-//
                 }
-
-//            dm.Disconnect(dm.getConnection());
+            else
+            {  System.out.println (params[i][DBMS] + "НЕ ПОДКЛЮЧЕНА!!!");}
             dm = null;
             }
-
-
         return null;
     }
 }
