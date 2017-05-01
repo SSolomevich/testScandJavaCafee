@@ -10,7 +10,6 @@ package ru.testScandJavaCafee.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 import oracle.jdbc.OracleConnection;
 
 public class dao_oracle extends dao_base
@@ -19,12 +18,12 @@ public class dao_oracle extends dao_base
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     public dao_oracle() {
         super ("oracle.jdbc.OracleDriver");
-    };
+    }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     @Override
     public void setURL (String host, String service, int port) {
         this.url = String.format("jdbc:oracle:thin:@%s:%d:%s", host, port, service);
-    };
+    }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     @Override
     public Connection getConnection () {
@@ -39,5 +38,5 @@ public class dao_oracle extends dao_base
         } catch (SQLException e) {
             connection = null;
         }
-    };
+    }
 }

@@ -9,29 +9,25 @@ package ru.testScandJavaCafee.dao;
 
 import java.sql.SQLException;
 import java.sql.DriverManager;
-
 import java.sql.Connection;
-
 import com.microsoft.sqlserver.jdbc.SQLServerConnection;
 
 public class dao_mssql extends dao_base
 {
     private  SQLServerConnection  connection  = null;
 
-    private  final  String   DATABASE_CREATE = "CREATE DATABASE %s ";
-    private  final  String   DROP_DATABASE   = "DROP DATABASE %s"   ;
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     public dao_mssql(){
         super ("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-    };
+    }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     @Override
     public void setURL (String host, String database, int port) {
         if (database.length() > 0)
             this.url = String.format("jdbc:sqlserver://%s:%d;databaseName=%s;", host, port, database);
         else
-            this.url = String.format("jdbc:sqlserver://%s:%d;", host, port);;
-    };
+            this.url = String.format("jdbc:sqlserver://%s:%d;", host, port);
+    }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     @Override
     public Connection getConnection (){
@@ -46,15 +42,7 @@ public class dao_mssql extends dao_base
         } catch (SQLException e) {
             connection = null;
         }
-    };
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    @Override
-    public boolean createSchema(final String schema) {
-        return execSQL (String.format(DATABASE_CREATE, schema));
     }
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    @Override
-    public boolean dropSchema(final String schema) {
-        return execSQL (String.format(DROP_DATABASE, schema));
-    }
+
+
 }
