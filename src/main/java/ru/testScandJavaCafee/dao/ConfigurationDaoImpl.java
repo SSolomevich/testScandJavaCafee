@@ -1,15 +1,21 @@
 package ru.testScandJavaCafee.dao;
-import ru.testScandJavaCafee.model.CoffeeType;
 
-import java.sql.*;
+import ru.testScandJavaCafee.model.CoffeeType;
+import ru.testScandJavaCafee.model.Configuration;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-/**
- * Created by 15 on 23.04.2017.
- */
-public class CoffeeTypeDaoImpl {
 
-    public  List<CoffeeType>  list = createListCoffeeType(new ArrayList<>());
+/**
+ * Created by 15 on 02.05.2017.
+ */
+public class ConfigurationDaoImpl {
+
+    public List<Configuration> list = createListConfiguration(new ArrayList<>());
 
     // JDBC variables for opening and managing connection
     private static Connection con;
@@ -44,11 +50,11 @@ public class CoffeeTypeDaoImpl {
         dao.Connect(params[idx][LOGIN], params[idx][PWD]);
     }
 
-    public  List<CoffeeType> createListCoffeeType(List<CoffeeType> list) {
+    public  List<Configuration> createListConfiguration(List<Configuration> list) {
 
         // Определение "модуля доступа к СУБД"
         dao_base dm = null;
-        String query = "select * from coffeetype";
+        String query = "select * from configuration";
         // Цикл перебора параметров подключения к СУБД
         for (int i = 0; i < params.length; i++) {
             // Проверка флага активности СУБД
@@ -78,12 +84,11 @@ public class CoffeeTypeDaoImpl {
                         // executing SELECT query
                         rs = stmt.executeQuery(query);
                         while (rs.next()) {
-                            CoffeeType coffeeType = new CoffeeType();
-                            coffeeType.setId(rs.getInt("id"));
-                            coffeeType.setType_name(rs.getString("type_name"));
-                            coffeeType.setPrice(rs.getDouble("price"));
-                            coffeeType.setDisabled(rs.getString("disabled"));
-                            list.add(coffeeType);
+                            Configuration configuration = new Configuration();
+                            configuration.setId(rs.getString("id"));
+                            configuration.setValue(rs.getString("value"));
+
+                            list.add(configuration);
                         }
                     }
                 } catch (SQLException sqlEx) {
@@ -107,4 +112,3 @@ public class CoffeeTypeDaoImpl {
         return null;
     }
 }
-
