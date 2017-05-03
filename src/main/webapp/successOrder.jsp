@@ -56,6 +56,10 @@
 
             text-align: center;
         }
+        .return
+        {
+            font-size: 11px;
+        }
         tr:nth-child(2n) {
             background: #f0f0f0;/* Цвет фона */
         }
@@ -80,7 +84,7 @@
 <%--<a href="CoffeeOrderController">Вернуться в магазин </a>--%>
 <br>
 </form>
-<a href="CoffeeTypeController">Вернуться в магазин</a>
+<a href="CoffeeTypeController" class="return">Вернуться в магазин</a>
 
 </body>
 </html>

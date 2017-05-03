@@ -57,6 +57,14 @@
             font-size: 14px;
             text-align: left;
         }
+        .td4
+        {
+            font-family: "Times New Roman", sans-serif;
+            font-size: 14px;
+            text-align: right;
+            font-weight: bold;
+        }
+
         .i
         {
             font-family: "Times New Roman", sans-serif;
@@ -73,6 +81,13 @@
             height: 20px;
             width: 200px;
             text-align: center;
+        }
+        .p1 {
+            color: red;
+        }
+        .return
+        {
+            font-size: 11px;
         }
         tr:nth-child(2n) {
             background: #f0f0f0; /* Цвет фона */
@@ -104,9 +119,7 @@
             <td class="i" > <input type="text" name="Address" maxlength="50"  size="14"  class="i2"/></td>
         </tr>
         <tr>
-
             <td class="td"> </td>
-
             <td class="td2"> <input type="submit" name="success" value="Заказать" class="input"> </td>
         </tr>
     </table>
@@ -126,21 +139,27 @@
                 <td class="td3" >${list.type_name}</td>
                 <td class="td2" >${list.price} TGR</td>
                 <td class="td2" >${list.count}</td>
-                <td class="td2" >${list.count*list.price} TGR</td>
+                <td class="td2" ><a class="p1">${list.count*list.price}</a> TGR</td>
             </tr>
         </c:forEach>
-        <%--<c:forEach items="${type}" var="type">--%>
-            <%--<tr>--%>
-                <%--<td class="td2" width="100px">${type.type_name}</td>--%>
-                <%--<td class="td2" width="50px">${type.price}</td>--%>
-                <%--<td class="td2" width="40px">${type.quantity}</td>--%>
-                <%--<td class="td2" width="20px">${type.quantity*type.price}</td>--%>
-            <%--</tr>--%>
-        <%--</c:forEach>--%>
+
+        <tr>
+            <td class="td4" colspan="3">Сумма:</td>
+            <td class="td2"><c:out value="${sum} TGR"/>  </td>
+        </tr>
+        <tr>
+            <td class="td4" colspan="3">Доставка:</td>
+            <td class="td2"> <c:out value="${m} TGR"/> </td>
+        </tr>
+        <tr>
+            <td class="td4" colspan="3">Всего:</td>
+            <td class="td2"><c:out value="${sum+m} TGR"/></td>
+        </tr>
+
     </table>
 </div>
 
 </form>
-<a href="CoffeeTypeController">Вернуться в магазин </a>
+<a href="CoffeeTypeController" class="return">Вернуться в магазин </a>
 </body>
 </html>

@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class ConfigurationDaoImpl {
 
-    public List<Configuration> list = createListConfiguration(new ArrayList<>());
+    public List<Configuration> list = createListConfiguration();
 
     // JDBC variables for opening and managing connection
     private static Connection con;
@@ -50,8 +50,8 @@ public class ConfigurationDaoImpl {
         dao.Connect(params[idx][LOGIN], params[idx][PWD]);
     }
 
-    public  List<Configuration> createListConfiguration(List<Configuration> list) {
-
+    public  List<Configuration> createListConfiguration() {
+        List<Configuration> list = new ArrayList<>();
         // Определение "модуля доступа к СУБД"
         dao_base dm = null;
         String query = "select * from configuration";
