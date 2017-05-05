@@ -153,7 +153,7 @@
         </tr>
         <tr>
             <td class="td4" colspan="3">Всего:</td>
-            <td class="td2"><c:out value="${sum+m} TGR"/></td>
+            <td class="td2"><c:out value="${m+sum} TGR"/></td>
         </tr>
 
     </table>
