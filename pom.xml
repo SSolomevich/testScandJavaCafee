@@ -74,6 +74,13 @@
             <artifactId>ojdbc6</artifactId>
             <version>11.2.0.4</version>
         </dependency>
+        <!-- Javassist -->
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.13.0-GA</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 </project>
 
