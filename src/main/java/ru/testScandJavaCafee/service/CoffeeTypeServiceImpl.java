@@ -3,8 +3,11 @@ package ru.testScandJavaCafee.service;
 import ru.testScandJavaCafee.dao.CoffeeTypeDaoImpl;
 import ru.testScandJavaCafee.model.CoffeeType;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 /**
  * Created by 15 on 25.04.2017.
@@ -61,4 +64,23 @@ public class CoffeeTypeServiceImpl implements CoffeeTypeService {
         }
         return list2;
     }
+
+
+    private MathParser parser = new MathParser();
+    public Integer parser(String m, String n, String x, Integer c, double p) throws Exception {
+        FileInputStream fis;
+        Properties property = new Properties();
+        String sum = "";
+        try {
+            fis = new FileInputStream("C:\\Java\\IdeaProjects\\testScandJavaCafee\\src\\main\\resources\\config.properties");
+            property.load(fis);
+            sum = property.getProperty("sum");
+
+        } catch (IOException e) {
+            System.err.println("ОШИБКА: Файл свойств отсуствует!");
+        }
+        Integer result = parser.Parse(sum, m, n, x, c, p);
+        return result;
+    }
+
 }
