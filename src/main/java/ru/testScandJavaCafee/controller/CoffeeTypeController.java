@@ -6,6 +6,7 @@ import ru.testScandJavaCafee.service.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.jstl.core.Config;
 import java.io.*;
 import java.util.*;
 
@@ -23,8 +24,16 @@ public class CoffeeTypeController extends Dispatcher {
         String[] count = req.getParameterValues("q");
         List<CoffeeType> list = coffeeTypeService.getListCoffeeType(count);
         list = coffeeTypeService.getFilterListCoffeeType(list);
+
         req.setAttribute("list", list);
+//        req.setAttribute("javax.servlet.jsp.jstl.fmt.fallbackLocale.request", "en-us");
+//        req.getSession().setAttribute("javax.servlet.jsp.jstl.fmt.locale.session", "en-EN");
+//        Config.set( req.getSession(), Config.FMT_LOCALE, new java.util.Locale("en_US") );
+        req.setAttribute("javax.servlet.jsp.jstl.fmt.fallbackLocale.request", "en");
+        req.setAttribute("javax.servlet.jsp.jstl.fmt.locale.request", "en");
         req.getRequestDispatcher("/coffeeType.jsp").forward(req, resp);
+
+
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,6 +69,8 @@ public class CoffeeTypeController extends Dispatcher {
         }
         request.setAttribute("sum", sum);
         request.setAttribute("x", list2.get(2).getValue());
+        request.setAttribute("javax.servlet.jsp.jstl.fmt.fallbackLocale.request", "en-us");
+        request.setAttribute("javax.servlet.jsp.jstl.fmt.fallbackLocale.request", "en-EN");
         request.getRequestDispatcher("/coffeeOrder.jsp").forward(request, response);
     }
 }

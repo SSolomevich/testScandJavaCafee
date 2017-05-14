@@ -7,7 +7,23 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+<%--<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />--%>
+<%--<c:set var="language" value="${param.language}" scope="session" />--%>
+<c:set var="language" value="en_EN" scope="session" />
+
+<%--<fmt:setLocale value = "en_EN"/>--%>
+<%--<fmt:setLocale value="${not empty language ?  language : pageContext.request.locale }" />--%>
+<%--<fmt:setLocale value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" />--%>
+
+
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="text" />
+<html lang="${language}">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Выбор сортов кофе</title>
@@ -75,13 +91,27 @@
 </head>
 <body>
 
+<form>
+    <select id="language" name="language" onchange="submit()">
+        <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
+        <option value="ru" ${language == 'ru' ? 'selected' : ''}>Russion</option>
+
+    </select>
+</form>
+<br>
+<br>
+
 <form action="CoffeeTypeController" method="post">
     <div class="table" >
         <table cellspacing="0px" cellpadding="2px" border="0px">
             <tr>
                 <th class="th" width="20px"> </th>
-                <th class="th" width="100px">Название</th>
-                <th class="th" width="50px">Цена</th>
+                <th class="th" width="100px">
+                     <fmt:message key="login.label.name" />
+                </th>
+                <th class="th" width="50px"><fmt:message key="login.label.price" /></th>
+
+
                 <th class="th" width="40px">Количество</th>
             </tr>
 
@@ -89,7 +119,7 @@
             <tr>
                 <td class="td" align="center">  <input type="checkbox" name="box" value="${list.id}">  </td>
                 <td class="td" align="left">${list.type_name}</td>
-                <td class="td"width="70px" align="left">${list.price} TGR</td>
+                <td class="td" width="70px" align="left">${list.price} TGR</td>
                 <td class="i"> <input type="text" name="q" maxlength="2"  size="14"  width="20px"/></td>
             </tr>
             </c:forEach>
@@ -101,5 +131,7 @@
     </div>
     <a class="p1">*</a><a class="p2"> - каждая третья чашка бесплатно.</a>
 </form>
+
+
 </body>
 </html>
