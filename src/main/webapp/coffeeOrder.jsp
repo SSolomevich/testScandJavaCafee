@@ -7,6 +7,12 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="text" />
+
 <html>
 <head>
     <title>Title</title>
@@ -99,28 +105,26 @@
     </style>
 </head>
 <body>
+
 <form action="CoffeeOrderController" method="post">
 
 <div class="table">
     <table cellspacing="0px" cellpadding="2px" border="0px">
+        <tr> <th class="th" colspan="2"><fmt:message key="label.delivery" /></th> </tr>
+
         <tr>
-
-            <th class="th" colspan="2">Доставка</th>
-
+            <td class="td"><fmt:message key="label.full_name" /></td>
+            <td class="i" > <input type="text" name="NameAndFamily" maxlength="50"  size="14"  class="i2"/></td>
         </tr>
 
-
-            <tr>
-                <td class="td">  ФИО </td>
-                <td class="i" > <input type="text" name="NameAndFamily" maxlength="50"  size="14"  class="i2"/></td>
-            </tr>
         <tr style="background-color: #F0F0F0">
-            <td class="td" >  Адрес </td>
+            <td class="td" > <fmt:message key="label.address" /></td>
             <td class="i" > <input type="text" name="Address" maxlength="50"  size="14"  class="i2"/></td>
         </tr>
+
         <tr>
             <td class="td"> </td>
-            <td class="td2"> <input type="submit" name="success" value="Заказать" class="input"> </td>
+            <td class="td2"> <input type="submit" name="success" value="<fmt:message key="label.submit" />" class="input"> </td>
         </tr>
     </table>
 </div>
@@ -129,10 +133,10 @@
 <div class="table">
     <table cellspacing="0px" cellpadding="2px" border="0px">
         <tr>
-            <th class="th" width="220px">Название</th>
-            <th class="th" width="50px">Цена</th>
-            <th class="th" width="40px">Количество</th>
-            <th class="th" width="60px">Всего </th>
+            <th class="th" width="220px"><fmt:message key="label.name" /></th>
+            <th class="th" width="50px"><fmt:message key="label.price" /></th>
+            <th class="th" width="40px"><fmt:message key="label.count" /></th>
+            <th class="th" width="60px"><fmt:message key="label.total" /></th>
         </tr>
         <c:forEach var="list" items="${list}">
             <tr>
@@ -144,15 +148,15 @@
         </c:forEach>
 
         <tr>
-            <td class="td4" colspan="3">Сумма:</td>
+            <td class="td4" colspan="3"><fmt:message key="label.amount" />:</td>
             <td class="td2"><c:out value="${sum} TGR"/>  </td>
         </tr>
         <tr>
-            <td class="td4" colspan="3">Доставка:</td>
+            <td class="td4" colspan="3"><fmt:message key="label.delivery" />:</td>
             <td class="td2"> <c:out value="${m} TGR"/> </td>
         </tr>
         <tr>
-            <td class="td4" colspan="3">Всего:</td>
+            <td class="td4" colspan="3"><fmt:message key="label.total" />:</td>
             <td class="td2"><c:out value="${m+sum} TGR"/></td>
         </tr>
 
@@ -160,6 +164,6 @@
 </div>
 
 </form>
-<a href="CoffeeTypeController" class="return">Вернуться в магазин </a>
+<a href="CoffeeTypeController" class="return"><fmt:message key="label.back_to_Shop" /></a>
 </body>
 </html>

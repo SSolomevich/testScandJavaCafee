@@ -14,12 +14,6 @@
 <%--<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />--%>
 <%--<c:set var="language" value="${param.language}" scope="session" />--%>
 <c:set var="language" value="en_EN" scope="session" />
-
-<%--<fmt:setLocale value = "en_EN"/>--%>
-<%--<fmt:setLocale value="${not empty language ?  language : pageContext.request.locale }" />--%>
-<%--<fmt:setLocale value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" />--%>
-
-
 <c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="text" />
@@ -95,7 +89,6 @@
     <select id="language" name="language" onchange="submit()">
         <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
         <option value="ru" ${language == 'ru' ? 'selected' : ''}>Russion</option>
-
     </select>
 </form>
 <br>
@@ -105,14 +98,10 @@
     <div class="table" >
         <table cellspacing="0px" cellpadding="2px" border="0px">
             <tr>
-                <th class="th" width="20px"> </th>
-                <th class="th" width="100px">
-                     <fmt:message key="login.label.name" />
-                </th>
-                <th class="th" width="50px"><fmt:message key="login.label.price" /></th>
-
-
-                <th class="th" width="40px">Количество</th>
+                <th class="th" width="20px"></th>
+                <th class="th" width="100px"><fmt:message key="label.name" /></th>
+                <th class="th" width="50px"><fmt:message key="label.price" /></th>
+                <th class="th" width="40px"><fmt:message key="label.count" /></th>
             </tr>
 
             <c:forEach var="list" items="${list}">
@@ -124,12 +113,12 @@
             </tr>
             </c:forEach>
             <tr>
-                <td class="td" colspan="4" align="right"> <input type="submit" name="success" value="Заказать" class="input"> </td>
+                <td class="td" colspan="4" align="right"> <input type="submit" name="success" value="<fmt:message key="label.submit" />" class="input"> </td>
             </tr>
 
         </table>
     </div>
-    <a class="p1">*</a><a class="p2"> - каждая третья чашка бесплатно.</a>
+    <a class="p1">*</a><a class="p2"><fmt:message key="label.star" /></a>
 </form>
 
 

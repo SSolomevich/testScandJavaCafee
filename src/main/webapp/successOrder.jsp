@@ -6,6 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<c:set var="language" value="${not empty param.language ? param.language : not empty language ? language : pageContext.request.locale}" scope="session" />
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="text" />
 <html>
 <head>
     <title>Успешный заказ</title>
@@ -74,17 +80,17 @@
 <div class="table">
     <table cellspacing="0px" cellpadding="2px" border="0px">
         <tr>
-            <th class="th" width="300px">Подтверждение</th>
+            <th class="th" width="300px"><fmt:message key="label.confirmation" /></th>
         </tr>
         <tr>
-            <td class="td2" >Ваш заказ принят</td>
+            <td class="td2" ><fmt:message key="label.accepted" /></td>
         </tr>
     </table>
 </div>
-<%--<a href="CoffeeOrderController">Вернуться в магазин </a>--%>
+
 <br>
 </form>
-<a href="CoffeeTypeController" class="return">Вернуться в магазин</a>
+<a href="CoffeeTypeController" class="return"><fmt:message key="label.back_to_Shop" /></a>
 
 </body>
 </html>

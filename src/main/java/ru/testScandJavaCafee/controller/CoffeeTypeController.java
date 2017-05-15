@@ -26,11 +26,7 @@ public class CoffeeTypeController extends Dispatcher {
         list = coffeeTypeService.getFilterListCoffeeType(list);
 
         req.setAttribute("list", list);
-//        req.setAttribute("javax.servlet.jsp.jstl.fmt.fallbackLocale.request", "en-us");
-//        req.getSession().setAttribute("javax.servlet.jsp.jstl.fmt.locale.session", "en-EN");
-//        Config.set( req.getSession(), Config.FMT_LOCALE, new java.util.Locale("en_US") );
-        req.setAttribute("javax.servlet.jsp.jstl.fmt.fallbackLocale.request", "en");
-        req.setAttribute("javax.servlet.jsp.jstl.fmt.locale.request", "en");
+
         req.getRequestDispatcher("/coffeeType.jsp").forward(req, resp);
 
 
