@@ -82,6 +82,61 @@
         }
 
     </style>
+    <script type="text/javascript">
+        function validLogin() {// java script function is created
+
+            valid = true;
+
+            if (document.frm1.q.value > '20')
+            { alert ( "!!!!!!!!!!!!!!!" );
+valid = true;
+//
+//
+            }
+//            if (document.frm1.q.value.length > 1)
+//            { alert ( "length!!!!!!!" );
+////        document.userform.password.focus();
+//                valid = false;
+//
+//            }
+//            if (q.value > '20')
+//            { alert ( "!!!!!!!!!!!!!!!" );
+////        document.userform.password.focus();
+//                return false; }
+//            if (document.frm1.q.value > "20")
+//            { alert ( "!!!!!!!???????" );
+////        document.userform.password.focus();
+//                return false; }
+//            if (document.frm1.q.value > 40)
+//            { alert ( "???????" );
+////        document.userform.password.focus();
+//                return false; }
+//        alert("Welcome mrbool readers" );
+     return valid ; }
+    </script>
+
+    <%--Read more: http://mrbool.com/how-to-use-javascript-in-jsp/29895#ixzz4hLoUBwyQ--%>
+    <%--<script type="text/javascript">--%>
+        <%--function Formdata() {--%>
+            <%--/* если не заполнено поле Ваше имя, длина менее 3-x*/--%>
+            <%--if (q.value > '20') {--%>
+                <%--alert('"Количество" введено неверно');--%>
+                <%--return false;--%>
+            <%--}--%>
+
+
+            <%--/* если не заполнено поле Ваше имя, длина менее 3-x*/--%>
+            <%--if (q.value.length > 1 )--%>
+            <%--{--%>
+                <%--alert('Заполните поле "Ваше имя"');--%>
+                <%--return false;--%>
+            <%--}--%>
+            <%--alert('Заполните поле "Ваше имя"');--%>
+            <%--alert("Welcome mrbool readers" );--%>
+            <%--return true;--%>
+        <%--}--%>
+
+    <%--</script>--%>
 </head>
 <body>
 
@@ -94,7 +149,7 @@
 <br>
 <br>
 
-<form action="CoffeeTypeController" method="post">
+<form name="frm1" action="CoffeeTypeController" method="post" onsubmit="return validLogin();">
     <div class="table" >
         <table cellspacing="0px" cellpadding="2px" border="0px">
             <tr>
@@ -120,6 +175,7 @@
     </div>
     <a class="p1">*</a><a class="p2"><fmt:message key="label.star" /></a>
 </form>
+<%--<form name="contact_form" method="post" action="dumb.htm" onsubmit="return Formdata();">--%>
 
 
 </body>
