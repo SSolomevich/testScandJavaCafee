@@ -103,10 +103,24 @@
         }
 
     </style>
+    <script type="text/javascript">
+        function validLogin() {// java script function is created
+
+            var valid = true;
+//            var a = parseInt(document.frm1.q.value, 10);
+//            var a = parseInt( document.frm2.Address.value, 10);
+            if (document.frm2.Address.value.length < 4)
+            { alert ( "!!!!!!!!!!!!!!!" );
+//                document.frm1.q.focus();
+                valid = false;
+
+            }
+            return valid ; }
+    </script>
 </head>
 <body>
 
-<form action="CoffeeOrderController" method="post">
+<form name="frm2"  action="CoffeeOrderController" method="post" onsubmit="return validLogin();">
 
 <div class="table">
     <table cellspacing="0px" cellpadding="2px" border="0px">

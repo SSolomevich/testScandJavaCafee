@@ -85,34 +85,43 @@
     <script type="text/javascript">
         function validLogin() {// java script function is created
 
-            valid = true;
-
-            if (document.frm1.q.value > '20')
-            { alert ( "!!!!!!!!!!!!!!!" );
-valid = true;
-//
-//
+           var valid = true;
+////            var a = parseInt(document.frm1.q.value, 10);
+////            var a = parseInt( document.forms["frm1"]["q"].value, 10);
+            for(i=0; i < document.frm1.q.length; i++) {
+            if (document.frm1.q[i].value.length > 1) {
+                alert("Количество чашек кофе одного вида не может превышать 9 штук!!");
+//                document.frm1.q.focus();
+                valid = false;
             }
-//            if (document.frm1.q.value.length > 1)
-//            { alert ( "length!!!!!!!" );
-////        document.userform.password.focus();
-//                valid = false;
-//
+            }
+
+//            var opts = document.frm1[0].q;
+//            for(i=0; i < opts.length; i++) {
+//                if(opts[i].checked) {return true;}
 //            }
-//            if (q.value > '20')
-//            { alert ( "!!!!!!!!!!!!!!!" );
-////        document.userform.password.focus();
-//                return false; }
-//            if (document.frm1.q.value > "20")
-//            { alert ( "!!!!!!!???????" );
-////        document.userform.password.focus();
-//                return false; }
+
+
+
+            return valid;
+//            var form = document.frm1;
+//            document.write(form.q.value + "<br />");
+
+//            if (document.q.value.length < 2)
+//            { alert ( "В строке не может содержаться менее 2 символов" );
+//                valid = false;
+////
+
+//            }
+
+//
 //            if (document.frm1.q.value > 40)
 //            { alert ( "???????" );
 ////        document.userform.password.focus();
 //                return false; }
-//        alert("Welcome mrbool readers" );
-     return valid ; }
+//      else { alert("Welcome mrbool readers" );}
+//     return valid ;
+        }
     </script>
 
     <%--Read more: http://mrbool.com/how-to-use-javascript-in-jsp/29895#ixzz4hLoUBwyQ--%>
@@ -164,7 +173,7 @@ valid = true;
                 <td class="td" align="center">  <input type="checkbox" name="box" value="${list.id}">  </td>
                 <td class="td" align="left">${list.type_name}</td>
                 <td class="td" width="70px" align="left">${list.price} TGR</td>
-                <td class="i"> <input type="text" name="q" maxlength="2"  size="14"  width="20px"/></td>
+                <td class="i"> <input type="number" name="q" maxlength="2"  size="14"  width="20px"/></td>
             </tr>
             </c:forEach>
             <tr>
