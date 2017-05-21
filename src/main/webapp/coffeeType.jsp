@@ -85,67 +85,52 @@
     <script type="text/javascript">
         function validLogin() {// java script function is created
 
-           var valid = true;
-////            var a = parseInt(document.frm1.q.value, 10);
-////            var a = parseInt( document.forms["frm1"]["q"].value, 10);
-            for(i=0; i < document.frm1.q.length; i++) {
-            if (document.frm1.q[i].value.length > 1) {
-                alert("Количество чашек кофе одного вида не может превышать 9 штук!!");
-//                document.frm1.q.focus();
-                valid = false;
-            }
-            }
-
-//            var opts = document.frm1[0].q;
-//            for(i=0; i < opts.length; i++) {
-//                if(opts[i].checked) {return true;}
+            var valid = true;
+            var validCount = false;
+            var validBox = false;
+            var validCountBox = false;
+            for (var i = 0; i < document.frm1.q.length; i++) {
+//            if (document.frm1.q[i].value.length > 1) {
+//                alert("Количество чашек кофе одного вида не может превышать 9 штук!!");
+//                valid = false;
 //            }
+                if (document.frm1.q[i].value > 20) {
+                    alert("Количество чашек кофе одного вида не может превышать 20 штук!!");
+                    valid = false;
+                }
 
+                if (document.frm1.q[i].value!="" && document.frm1.q[i].value!=0) {
+                    validCount = true;
+                }
 
+                if (document.frm1.box[i].checked) {
+                    validBox = true;
+                }
+
+                if (document.frm1.q[i].value!="" && document.frm1.box[i].checked  && document.frm1.q[i].value!=0)  {
+                    validCountBox = true;
+                }
+
+            }
+            if (validCount == false && validBox == false) {
+                alert("Укажите количество чашек и тип кофе!");
+                valid = false;}
+            else if (validCount == false) {
+                alert("Укажите количество чашек!");
+                valid = false;}
+            else if (validBox == false) {
+                alert("Укажите тип кофе!");
+                valid = false;}
+            else if (validCountBox == false) {
+                alert("Выбранному типу кофе должно соответствовать некоторое количество чашек!");
+                valid = false;}
 
             return valid;
-//            var form = document.frm1;
-//            document.write(form.q.value + "<br />");
-
-//            if (document.q.value.length < 2)
-//            { alert ( "В строке не может содержаться менее 2 символов" );
-//                valid = false;
-////
-
-//            }
-
-//
-//            if (document.frm1.q.value > 40)
-//            { alert ( "???????" );
-////        document.userform.password.focus();
-//                return false; }
-//      else { alert("Welcome mrbool readers" );}
-//     return valid ;
         }
+
+
     </script>
 
-    <%--Read more: http://mrbool.com/how-to-use-javascript-in-jsp/29895#ixzz4hLoUBwyQ--%>
-    <%--<script type="text/javascript">--%>
-        <%--function Formdata() {--%>
-            <%--/* если не заполнено поле Ваше имя, длина менее 3-x*/--%>
-            <%--if (q.value > '20') {--%>
-                <%--alert('"Количество" введено неверно');--%>
-                <%--return false;--%>
-            <%--}--%>
-
-
-            <%--/* если не заполнено поле Ваше имя, длина менее 3-x*/--%>
-            <%--if (q.value.length > 1 )--%>
-            <%--{--%>
-                <%--alert('Заполните поле "Ваше имя"');--%>
-                <%--return false;--%>
-            <%--}--%>
-            <%--alert('Заполните поле "Ваше имя"');--%>
-            <%--alert("Welcome mrbool readers" );--%>
-            <%--return true;--%>
-        <%--}--%>
-
-    <%--</script>--%>
 </head>
 <body>
 
