@@ -95,7 +95,8 @@
 //                valid = false;
 //            }
                 if (document.frm1.q[i].value > 20) {
-                    alert("Количество чашек кофе одного вида не может превышать 20 штук!!");
+                    alert("The number of cups of coffee of one kind can not exceed 20 pieces !! / " +
+                        "Количество чашек кофе одного вида не может превышать 20 штук!!");
                     valid = false;
                 }
 
@@ -113,16 +114,24 @@
 
             }
             if (validCount == false && validBox == false) {
-                alert("Укажите количество чашек и тип кофе!");
+                <%--alert(<fmt:message key="label.validCount&Box" />);--%>
+                alert("Indicate the number of cups and type of coffee! / " +
+                    "Укажите количество чашек и тип кофе!");
                 valid = false;}
             else if (validCount == false) {
-                alert("Укажите количество чашек!");
+                alert("Indicate the number of cups! / " +
+                    "Укажите количество чашек!");
+                <%--alert(<fmt:message key="label.validCount" />);--%>
                 valid = false;}
             else if (validBox == false) {
-                alert("Укажите тип кофе!");
+                alert("Indicate the type of coffee! / " +
+                    "Укажите тип кофе!");
+                <%--alert(<fmt:message key="label.validBox" />);--%>
                 valid = false;}
             else if (validCountBox == false) {
-                alert("Выбранному типу кофе должно соответствовать некоторое количество чашек!");
+                alert("A selected number of cups must fit a selected type of coffee! / " +
+                    "Выбранному типу кофе должно соответствовать некоторое количество чашек!");
+                <%--alert(<fmt:message key="label.validCountBox" />);--%>
                 valid = false;}
 
             return valid;
@@ -134,6 +143,14 @@
 </head>
 <body>
 
+<script type="text/javascript">
+//    function validCount() {
+        if (${countTest} = "f")
+            alert("Invalid number format! / " +
+                "Ошибочный формат числа!");
+
+//    }
+</script>
 <form>
     <select id="language" name="language" onchange="submit()">
         <option value="en" ${language == 'en' ? 'selected' : ''}>English</option>
@@ -144,6 +161,8 @@
 <br>
 
 <form name="frm1" action="CoffeeTypeController" method="post" onsubmit="return validLogin();">
+
+
     <div class="table" >
         <table cellspacing="0px" cellpadding="2px" border="0px">
             <tr>

@@ -65,8 +65,24 @@ public class CoffeeTypeController extends Dispatcher {
         }
         request.setAttribute("sum", sum);
         request.setAttribute("x", list2.get(2).getValue());
-        request.setAttribute("javax.servlet.jsp.jstl.fmt.fallbackLocale.request", "en-us");
-        request.setAttribute("javax.servlet.jsp.jstl.fmt.fallbackLocale.request", "en-EN");
+//        request.setAttribute("javax.servlet.jsp.jstl.fmt.fallbackLocale.request", "en-us");
+//        request.setAttribute("javax.servlet.jsp.jstl.fmt.fallbackLocale.request", "en-EN");
+        String countTest;
+
+        for (int i=0; i<count.length;i++) {
+            if (!count[i].equals("")) {
+                if (Integer.parseInt(count[i]) > 10 || Integer.parseInt(count[i]) < 0) {
+                    countTest = "f";
+                    request.setAttribute("countTest", countTest);
+                    String[] count2 = request.getParameterValues("q");
+                    List<CoffeeType> list3 = coffeeTypeService.getListCoffeeType(count2);
+                    list3 = coffeeTypeService.getFilterListCoffeeType(list3);
+
+                    request.setAttribute("list", list3);
+                    request.getRequestDispatcher("/coffeeType.jsp").forward(request, response);
+                }
+            }
+        }
         request.getRequestDispatcher("/coffeeOrder.jsp").forward(request, response);
     }
 }
