@@ -16,6 +16,7 @@ import java.util.*;
 public class CoffeeTypeController extends Dispatcher {
 
     private CoffeeTypeServiceImpl coffeeTypeService = new CoffeeTypeServiceImpl();
+//    private CoffeeTypeService coffeeTypeService = new CoffeeTypeService();
     private ConfigurationServiceImpl configurationService = new ConfigurationServiceImpl();
 
 

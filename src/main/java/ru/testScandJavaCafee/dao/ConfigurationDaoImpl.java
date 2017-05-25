@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by 15 on 02.05.2017.
  */
-public class ConfigurationDaoImpl {
+public class ConfigurationDaoImpl implements ConfigurationDao{
 
     public List<Configuration> list = createListConfiguration();
 
@@ -43,7 +43,7 @@ public class ConfigurationDaoImpl {
      * @param dao модуль доступа
      * @param idx идентификатор сервера СУБД
      */
-    private void createConnecion (dao_base dao, final int idx) {
+    public void createConnecion (dao_base dao, final int idx) {
         // Формирование строки подключения
         dao.setURL(params[idx][HOST], params[idx][SCHEMA], ports[idx]);
         // Подключение к серверу

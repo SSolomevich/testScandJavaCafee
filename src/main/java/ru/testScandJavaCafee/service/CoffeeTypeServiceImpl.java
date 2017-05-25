@@ -1,5 +1,6 @@
 package ru.testScandJavaCafee.service;
 
+import ru.testScandJavaCafee.dao.CoffeeTypeDao;
 import ru.testScandJavaCafee.dao.CoffeeTypeDaoImpl;
 import ru.testScandJavaCafee.model.CoffeeType;
 
@@ -15,19 +16,16 @@ import java.util.Properties;
 public class CoffeeTypeServiceImpl implements CoffeeTypeService {
 
     CoffeeTypeDaoImpl coffeeTypeDao = new CoffeeTypeDaoImpl();
+//        CoffeeTypeDao coffeeTypeDao;
 
     @Override
     public List<CoffeeType> getListCoffeeType(String[] count) {
         List<CoffeeType> list = coffeeTypeDao.list;
         for (int i = 0; i< list.size(); i++) {
             CoffeeType item = list.get(i);
-//            if(req.getParameterValues("box["+item.getId()+"]")){
             if (count != null && count[i] != null && !count[i].equals("")) {
                 item.setCount(Integer.parseInt(count[i]));
             }
-//            }
-
-
             else item.setCount(0);
         }
         return list;

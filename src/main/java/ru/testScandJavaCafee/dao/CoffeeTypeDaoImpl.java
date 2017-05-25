@@ -8,9 +8,13 @@ import java.util.List;
 /**
  * Created by 15 on 23.04.2017.
  */
-public class CoffeeTypeDaoImpl {
+public class CoffeeTypeDaoImpl implements CoffeeTypeDao{
 
     public  List<CoffeeType>  list = createListCoffeeType(new ArrayList<>());
+
+    public List<CoffeeType> getList() {
+        return list;
+    }
 
     // JDBC variables for opening and managing connection
     private static Connection con;
@@ -38,7 +42,7 @@ public class CoffeeTypeDaoImpl {
      * @param dao модуль доступа
      * @param idx идентификатор сервера СУБД
      */
-    private void createConnecion (dao_base dao, final int idx) {
+    public void createConnecion (dao_base dao, final int idx) {
         // Формирование строки подключения
         dao.setURL(params[idx][HOST], params[idx][SCHEMA], ports[idx]);
         // Подключение к серверу

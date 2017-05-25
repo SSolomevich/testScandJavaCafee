@@ -10,7 +10,7 @@ import java.sql.Statement;
 /**
  * Created by 15 on 26.04.2017.
  */
-public class CoffeeOrderServiceImpl {
+public class CoffeeOrderServiceImpl implements CoffeeOrderService{
 //    @Override
 //    public void insert(String name, String delivery_address) {
 //        // JDBC URL, username и password of MySQL server
