@@ -71,7 +71,7 @@ public class CoffeeTypeController extends Dispatcher {
 
         for (int i=0; i<count.length;i++) {
             if (!count[i].equals("")) {
-                if (Integer.parseInt(count[i]) > 10 || Integer.parseInt(count[i]) < 0) {
+                if (Integer.parseInt(count[i]) > 20 || Integer.parseInt(count[i]) < 0) {
                     countTest = "f";
                     request.setAttribute("countTest", countTest);
                     String[] count2 = request.getParameterValues("q");

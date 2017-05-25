@@ -1,44 +1,47 @@
-package ru.testScandJavaCafee.dao;
+package ru.testScandJavaCafee.dao.daoBase;
 
 /**
- * Created by 15 on 29.04.2017.
+ * Created by 15 on 27.04.2017.
  */
 /**
- * Модуль доступа к серверу СУБД PostgreSQL
+ * Модуль доступа к серверу СУБД MySQL
  */
-import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import org.postgresql.PGConnection;
+import com.mysql.jdbc.Connection;
+import ru.testScandJavaCafee.dao.daoBase.dao_base;
 
-public class dao_postgres extends dao_base
+public class dao_mysql extends dao_base
 {
-    private  PGConnection  connection = null;
+    private  com.mysql.jdbc.Connection  connection = null;
+
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    public dao_postgres() {
-        super ("org.postgresql.Driver");
+    public dao_mysql() {
+        super ("com.mysql.jdbc.Driver");
     }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     @Override
     public void setURL (String host, String database, int port) {
         if (database.length() > 0)
-            this.url = "jdbc:postgresql://" + host + ":" + port + "/" + database;
+            this.url = "jdbc:mysql://" + host + ":" + port + "/" + database;
         else
-            this.url = "jdbc:postgresql://" + host + ":" + port;
+            this.url = "jdbc:mysql://" + host + ":" + port;
     }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     @Override
     public Connection getConnection () {
-        return (java.sql.Connection) connection;
+        return connection;
     }
     //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     @Override
     public void Connect (String login, String password) {
         super.Connect(login, password);
         try {
-            connection = (PGConnection) DriverManager.getConnection(url, properties);
+            connection = (com.mysql.jdbc.Connection) DriverManager.getConnection(url, properties);
         } catch (SQLException e) {
             connection = null;
         }
     }
+
+
 }

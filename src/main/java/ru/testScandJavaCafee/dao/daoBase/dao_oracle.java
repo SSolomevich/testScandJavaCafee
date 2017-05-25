@@ -1,4 +1,4 @@
-package ru.testScandJavaCafee.dao;
+package ru.testScandJavaCafee.dao.daoBase;
 
 /**
  * Created by 15 on 27.04.2017.
@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import oracle.jdbc.OracleConnection;
+import ru.testScandJavaCafee.dao.daoBase.dao_base;
 
 public class dao_oracle extends dao_base
 {

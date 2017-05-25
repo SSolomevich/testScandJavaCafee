@@ -1,4 +1,5 @@
 package ru.testScandJavaCafee.dao;
+import ru.testScandJavaCafee.dao.daoBase.*;
 import ru.testScandJavaCafee.model.CoffeeType;
 
 import java.sql.*;
@@ -37,7 +38,7 @@ public class CoffeeTypeDaoImpl {
      * @param dao модуль доступа
      * @param idx идентификатор сервера СУБД
      */
-    private void createConnecion (dao_base dao,  final int idx) {
+    private void createConnecion (dao_base dao, final int idx) {
         // Формирование строки подключения
         dao.setURL(params[idx][HOST], params[idx][SCHEMA], ports[idx]);
         // Подключение к серверу
@@ -58,8 +59,8 @@ public class CoffeeTypeDaoImpl {
                 switch (i) {
                     case 0: dm = new dao_mysql();  break;
                     case 1: dm = new dao_postgres(); break;
-                    case 2 : dm = new dao_mssql  (); break;
-                    case 3 : dm = new dao_oracle   (); break;
+                    case 2 : dm = new dao_mssql(); break;
+                    case 3 : dm = new dao_oracle(); break;
                 }
                 try {
                     // Проверка создания dm

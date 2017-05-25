@@ -1,4 +1,4 @@
-package ru.testScandJavaCafee.dao;
+package ru.testScandJavaCafee.dao.daoBase;
 
 /**
  * Created by 15 on 27.04.2017.
@@ -24,7 +24,7 @@ public abstract class dao_base {
     /**
      * Процедура регистрации драйвера JDBC
      */
-    protected void RegisterDriverManager() {
+    public void RegisterDriverManager() {
         try {
             Class.forName(driver).newInstance();
         } catch (InstantiationException e) {e.printStackTrace();

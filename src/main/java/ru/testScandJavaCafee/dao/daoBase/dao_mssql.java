@@ -1,4 +1,4 @@
-package ru.testScandJavaCafee.dao;
+package ru.testScandJavaCafee.dao.daoBase;
 
 /**
  * Created by 15 on 29.04.2017.
@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.DriverManager;
 import java.sql.Connection;
 import com.microsoft.sqlserver.jdbc.SQLServerConnection;
+import ru.testScandJavaCafee.dao.daoBase.dao_base;
 
 public class dao_mssql extends dao_base
 {
