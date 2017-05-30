@@ -1,8 +1,13 @@
 package ru.testScandJavaCafee.controller;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 import ru.testScandJavaCafee.model.CoffeeType;
 import ru.testScandJavaCafee.model.Configuration;
 import ru.testScandJavaCafee.service.*;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +24,12 @@ public class CoffeeTypeController extends Dispatcher {
 //    private CoffeeTypeService coffeeTypeService = new CoffeeTypeService();
     private ConfigurationServiceImpl configurationService = new ConfigurationServiceImpl();
 
-
+//    public void init(ServletConfig config) throws ServletException {
+//        ApplicationContext context =
+//                WebApplicationContextUtils.getRequiredWebApplicationContext(
+//                        this.getServletContext());
+//    }
+//SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this, getServletContext());`
     //  Создано 2 метода - гет и пост
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String[] count = req.getParameterValues("q");

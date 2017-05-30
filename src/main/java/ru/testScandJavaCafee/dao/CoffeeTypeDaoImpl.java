@@ -1,4 +1,5 @@
 package ru.testScandJavaCafee.dao;
+import org.springframework.stereotype.Repository;
 import ru.testScandJavaCafee.dao.daoBase.*;
 import ru.testScandJavaCafee.model.CoffeeType;
 
@@ -8,6 +9,7 @@ import java.util.List;
 /**
  * Created by 15 on 23.04.2017.
  */
+@Repository
 public class CoffeeTypeDaoImpl implements CoffeeTypeDao{
 
     public  List<CoffeeType>  list = createListCoffeeType(new ArrayList<>());

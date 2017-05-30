@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
@@ -36,6 +43,76 @@
         <servlet-name>CoffeeOrderController</servlet-name>
         <url-pattern>/CoffeeOrderController</url-pattern>
     </servlet-mapping>
+
+
+
+
+    <!--<listener>-->
+        <!--<listener-class>org.springframework.web.context.ContextLoaderListener-->
+        <!--</listener-class>-->
+    <!--</listener>-->
+
+    <!--<context-param>-->
+        <!--<param-name>contextConfigLocation</param-name>-->
+        <!--<param-value>-->
+            <!--/WEB-INF/spring-context.xml-->
+        <!--</param-value>-->
+    <!--</context-param>-->
+    <!--<context-param>-->
+        <!--<param-name>contextConfigLocation</param-name>-->
+        <!--<param-value>classpath:spring</param-value>-->
+    <!--</context-param>-->
+    <!--<listener>-->
+        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+    <!--</listener>-->
+    <!--<context-param>-->
+        <!--<param-name>contextConfigLocation</param-name>-->
+        <!--<param-value>classpath:/**/spring-context.xml-->
+        <!--</param-value>-->
+    <!--</context-param>-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            WEB-INF/spring-context.xml
+        </param-value>
+
+    </context-param>
+
+    <!--<listener>-->
+        <!--<listener-class>-->
+            <!--org.springframework.web.context.ContextLoaderListener-->
+        <!--</listener-class>-->
+    <!--</listener>-->
+    <!--<servlet>-->
+        <!--<servlet-name>Co</servlet-name>-->
+        <!--<servlet-class>-->
+            <!--org.springframework.web.servlet.DispatcherServlet-->
+        <!--</servlet-class>-->
+    <!--</servlet>-->
+
+
+
+
+
+
+
+    <!--<listener>-->
+        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+    <!--</listener>-->
+
+    <!--<servlet>-->
+        <!--<servlet-name>springServlet</servlet-name>-->
+        <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
+        <!--<init-param>-->
+            <!--<param-name>contextConfigLocation</param-name>-->
+            <!--<param-value></param-value>-->
+        <!--</init-param>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>springServlet</servlet-name>-->
+        <!--<url-pattern>/</url-pattern>-->
+    <!--</servlet-mapping>-->
+
 
 <welcome-file-list><welcome-file>
     index.jsp

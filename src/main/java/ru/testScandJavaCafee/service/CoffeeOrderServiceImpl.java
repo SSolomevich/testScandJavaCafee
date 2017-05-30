@@ -1,7 +1,13 @@
 package ru.testScandJavaCafee.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Service;
+import ru.testScandJavaCafee.dao.CoffeeOrderDao;
 import ru.testScandJavaCafee.dao.CoffeeOrderDaoImpl;
 
+import javax.annotation.Resource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,7 +16,33 @@ import java.sql.Statement;
 /**
  * Created by 15 on 26.04.2017.
  */
+
+@Service
 public class CoffeeOrderServiceImpl implements CoffeeOrderService{
+
+
+
+
+
+//    CoffeeOrderDaoImpl coffeeOrderDao = new CoffeeOrderDaoImpl();
+
+//
+
+    CoffeeOrderDao coffeeOrderDao ;
+    @Autowired
+    public void setCoffeeOrderDao(CoffeeOrderDao coffeeOrderDao) {
+        this.coffeeOrderDao = coffeeOrderDao;
+    }
+
+    @Override
+    public void insert(String name, String delivery_address) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring-context.xml");
+       CoffeeOrderDao coffeeOrderDao = context.getBean(CoffeeOrderDao.class);
+        coffeeOrderDao.insert(name, delivery_address);
+    }
+
+
+}
 //    @Override
 //    public void insert(String name, String delivery_address) {
 //        // JDBC URL, username и password of MySQL server
@@ -31,11 +63,3 @@ public class CoffeeOrderServiceImpl implements CoffeeOrderService{
 //            System.out.println(e.getMessage());
 //        }
 //    }
-
-    CoffeeOrderDaoImpl coffeeOrderDao = new CoffeeOrderDaoImpl();
-    public void insert(String name, String delivery_address) {
-        coffeeOrderDao.insert(name, delivery_address);
-    }
-
-
-}

@@ -1,5 +1,6 @@
 package ru.testScandJavaCafee.dao;
 
+import org.springframework.stereotype.Repository;
 import ru.testScandJavaCafee.service.CoffeeTypeServiceImpl;
 
 import java.sql.Connection;
@@ -10,6 +11,7 @@ import java.sql.Statement;
 /**
  * Created by 15 on 26.04.2017.
  */
+@Repository
 public class CoffeeOrderDaoImpl implements CoffeeOrderDao{
     public void insert(String name, String delivery_address) {
         // JDBC URL, username и password of MySQL server
