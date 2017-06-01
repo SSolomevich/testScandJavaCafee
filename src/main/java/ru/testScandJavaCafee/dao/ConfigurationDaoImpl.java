@@ -1,5 +1,6 @@
 package ru.testScandJavaCafee.dao;
 
+import org.springframework.stereotype.Repository;
 import ru.testScandJavaCafee.dao.daoBase.*;
 import ru.testScandJavaCafee.model.Configuration;
 
@@ -13,6 +14,7 @@ import java.util.List;
 /**
  * Created by 15 on 02.05.2017.
  */
+@Repository
 public class ConfigurationDaoImpl implements ConfigurationDao{
 
     public List<Configuration> list = createListConfiguration();

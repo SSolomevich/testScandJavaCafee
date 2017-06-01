@@ -15,16 +15,23 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-        <!--<bean class="ru.testScandJavaCafee.dao.CoffeeTypeDaoImpl" id="coffeeTypeDaoImpl"/>-->
+        <bean class="ru.testScandJavaCafee.dao.CoffeeTypeDaoImpl" id="coffeeTypeDaoImpl"/>
 
-        <!--<bean class="ru.testScandJavaCafee.service.CoffeeTypeServiceImpl">-->
-            <!--<property name="coffeeTypeDao" ref="coffeeTypeDaoImpl"/>-->
-        <!--</bean>-->
+        <bean class="ru.testScandJavaCafee.service.CoffeeTypeServiceImpl">
+            <property name="coffeeTypeDao" ref="coffeeTypeDaoImpl"/>
+        </bean>
 
     <bean class="ru.testScandJavaCafee.dao.CoffeeOrderDaoImpl" id="coffeeOrderDaoImpl"/>
 
     <bean class="ru.testScandJavaCafee.service.CoffeeOrderServiceImpl">
         <property name="coffeeOrderDao" ref="coffeeOrderDaoImpl"/>
+    </bean>
+
+
+    <bean class="ru.testScandJavaCafee.dao.ConfigurationDaoImpl" id="configurationDaoImpl"/>
+
+    <bean class="ru.testScandJavaCafee.service.ConfigurationServiceImpl">
+        <property name="configurationDao" ref="configurationDaoImpl"/>
     </bean>
     <!--<bean class="org.springframework.web.context.support.ServletContextAttributeExporter">-->
     <!--<property name="attributes">-->

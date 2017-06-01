@@ -115,6 +115,6 @@
 
 
 <welcome-file-list><welcome-file>
-    index.jsp
+    CoffeeTypeController
 </welcome-file></welcome-file-list>
 </web-app>

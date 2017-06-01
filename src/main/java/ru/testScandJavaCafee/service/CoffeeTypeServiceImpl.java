@@ -1,9 +1,12 @@
 package ru.testScandJavaCafee.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
+import ru.testScandJavaCafee.dao.CoffeeOrderDao;
 import ru.testScandJavaCafee.dao.CoffeeTypeDao;
 import ru.testScandJavaCafee.dao.CoffeeTypeDaoImpl;
 import ru.testScandJavaCafee.model.CoffeeType;
@@ -22,28 +25,36 @@ import java.util.Properties;
 @Service
 public class CoffeeTypeServiceImpl implements CoffeeTypeService {
 
-    CoffeeTypeDaoImpl coffeeTypeDao = new CoffeeTypeDaoImpl();
+    CoffeeTypeDaoImpl coffeeTypeDao1 = new CoffeeTypeDaoImpl();
 //    @Resource(name = "coffeeTypeDao")
-//   CoffeeTypeDao coffeeTypeDao ;
+
+   CoffeeTypeDao coffeeTypeDao2 ;
 // = (CoffeeTypeDao) getServletContext().getAttribute("userDao");
 ////        = new CoffeeTypeDaoImpl();
 //WebApplicationContext springContext = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 //    UserDao userDao =(UserDao)springContext.getBean("userDao");
 
-//    @Autowired
-//    public void setCoffeeTypeDao(CoffeeTypeDao coffeeTypeDao) {
-//        this.coffeeTypeDao = coffeeTypeDao;
-//    }
+    @Autowired
+    public void setCoffeeTypeDao(CoffeeTypeDao coffeeTypeDao) {
+        this.coffeeTypeDao2 = coffeeTypeDao;
+    }
 
 
 
 
     @Override
     public List<CoffeeType> getListCoffeeType(String[] count) {
-        List<CoffeeType> list = coffeeTypeDao.getList();
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring-context.xml");
+        CoffeeTypeDao coffeeTypeDao = context.getBean(CoffeeTypeDao.class);
+        List<CoffeeType> list = coffeeTypeDao1.getList();
         for (int i = 0; i< list.size(); i++) {
             CoffeeType item = list.get(i);
-            if (count != null && count[i] != null && !count[i].equals("")) {
+            if (
+                    count != null
+                    &&
+ count[i] != null
+                    && !count[i].equals("")
+                    ) {
                 item.setCount(Integer.parseInt(count[i]));
             }
             else item.setCount(0);
@@ -67,11 +78,13 @@ public class CoffeeTypeServiceImpl implements CoffeeTypeService {
 
     @Override
     public List<CoffeeType> getListCoffeeOrder(List<CoffeeType> list, String[] checkbox) {
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring-context.xml");
+        CoffeeTypeDao coffeeTypeDao = context.getBean(CoffeeTypeDao.class);
         List<CoffeeType> list2=new ArrayList<>();
         if (checkbox!=null&&checkbox.length>0) {
             for (int i = 0; i < checkbox.length; i++) {
-                for (int j = 0; j < coffeeTypeDao.getList().size(); j++) {
-                    if (checkbox[i].equals(String.valueOf(coffeeTypeDao.getList().get(j).getId()))
+                for (int j = 0; j < coffeeTypeDao1.getList().size(); j++) {
+                    if (checkbox[i].equals(String.valueOf(coffeeTypeDao1.getList().get(j).getId()))
                             && list.get(j).getCount()!=0
                             ) {
                         list2.add(list.get(j));
