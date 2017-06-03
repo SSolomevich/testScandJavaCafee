@@ -5,13 +5,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import ru.testScandJavaCafee.dao.CoffeeOrderDao;
-import ru.testScandJavaCafee.dao.CoffeeOrderDaoImpl;
-
-import javax.annotation.Resource;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 /**
  * Created by 15 on 26.04.2017.
@@ -36,8 +29,8 @@ public class CoffeeOrderServiceImpl implements CoffeeOrderService{
 
     @Override
     public void insert(String name, String delivery_address) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring-context.xml");
-       CoffeeOrderDao coffeeOrderDao = context.getBean(CoffeeOrderDao.class);
+//        ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/spring-context.xml");
+//       CoffeeOrderDao coffeeOrderDao = context.getBean(CoffeeOrderDao.class);
         coffeeOrderDao.insert(name, delivery_address);
     }
 

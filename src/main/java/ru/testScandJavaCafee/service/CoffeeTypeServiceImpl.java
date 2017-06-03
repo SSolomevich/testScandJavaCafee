@@ -4,17 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-import ru.testScandJavaCafee.dao.CoffeeOrderDao;
 import ru.testScandJavaCafee.dao.CoffeeTypeDao;
 import ru.testScandJavaCafee.dao.CoffeeTypeDaoImpl;
 import ru.testScandJavaCafee.model.CoffeeType;
 
-import javax.annotation.Resource;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.FileStore;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -44,7 +39,7 @@ public class CoffeeTypeServiceImpl implements CoffeeTypeService {
 
     @Override
     public List<CoffeeType> getListCoffeeType(String[] count) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring-context.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/spring-context.xml");
         CoffeeTypeDao coffeeTypeDao = context.getBean(CoffeeTypeDao.class);
         List<CoffeeType> list = coffeeTypeDao1.getList();
         for (int i = 0; i< list.size(); i++) {
@@ -78,7 +73,7 @@ public class CoffeeTypeServiceImpl implements CoffeeTypeService {
 
     @Override
     public List<CoffeeType> getListCoffeeOrder(List<CoffeeType> list, String[] checkbox) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring-context.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/spring-context.xml");
         CoffeeTypeDao coffeeTypeDao = context.getBean(CoffeeTypeDao.class);
         List<CoffeeType> list2=new ArrayList<>();
         if (checkbox!=null&&checkbox.length>0) {

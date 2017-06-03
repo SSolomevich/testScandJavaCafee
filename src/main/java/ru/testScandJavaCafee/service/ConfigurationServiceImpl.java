@@ -4,9 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
-import ru.testScandJavaCafee.dao.CoffeeOrderDao;
 import ru.testScandJavaCafee.dao.ConfigurationDao;
-import ru.testScandJavaCafee.dao.ConfigurationDaoImpl;
 import ru.testScandJavaCafee.model.Configuration;
 
 import java.util.List;
@@ -30,8 +28,8 @@ public class ConfigurationServiceImpl implements ConfigurationService{
 
     public List<Configuration> getListConfiguration()
     {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring-context.xml");
-        ConfigurationDao configurationDao = context.getBean(ConfigurationDao.class);
+//        ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/spring-context.xml");
+//        ConfigurationDao configurationDao = context.getBean(ConfigurationDao.class);
         return configurationDao.createListConfiguration();
     }
 
