@@ -70,30 +70,24 @@
         <!--<param-value>classpath:/**/spring-context.xml-->
         <!--</param-value>-->
     <!--</context-param>-->
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
 
-            WEB-INF/spring/spring-context.xml
-        </param-value>
 
-    </context-param>
-    <listener>
-        <listener-class>
-            org.springframework.web.context.ContextLoaderListener
-        </listener-class>
-    </listener>
+
+
+
+    <!--<context-param>-->
+        <!--<param-name>contextConfigLocation</param-name>-->
+        <!--<param-value>-->
+
+            <!--WEB-INF/spring/spring-context.xml-->
+        <!--</param-value>-->
+
+    <!--</context-param>-->
     <!--<listener>-->
         <!--<listener-class>-->
             <!--org.springframework.web.context.ContextLoaderListener-->
         <!--</listener-class>-->
     <!--</listener>-->
-    <!--<servlet>-->
-        <!--<servlet-name>Co</servlet-name>-->
-        <!--<servlet-class>-->
-            <!--org.springframework.web.servlet.DispatcherServlet-->
-        <!--</servlet-class>-->
-    <!--</servlet>-->
 
 
 
@@ -101,22 +95,6 @@
 
 
 
-    <!--<listener>-->
-        <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
-    <!--</listener>-->
-
-    <!--<servlet>-->
-        <!--<servlet-name>springServlet</servlet-name>-->
-        <!--<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>-->
-        <!--<init-param>-->
-            <!--<param-name>contextConfigLocation</param-name>-->
-            <!--<param-value></param-value>-->
-        <!--</init-param>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>springServlet</servlet-name>-->
-        <!--<url-pattern>/</url-pattern>-->
-    <!--</servlet-mapping>-->
 
 
 <welcome-file-list><welcome-file>

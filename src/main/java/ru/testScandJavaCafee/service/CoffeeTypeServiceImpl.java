@@ -23,24 +23,24 @@ public class CoffeeTypeServiceImpl implements CoffeeTypeService {
     CoffeeTypeDaoImpl coffeeTypeDao1 = new CoffeeTypeDaoImpl();
 //    @Resource(name = "coffeeTypeDao")
 
-   CoffeeTypeDao coffeeTypeDao2 ;
+//   CoffeeTypeDao coffeeTypeDao ;
 // = (CoffeeTypeDao) getServletContext().getAttribute("userDao");
 ////        = new CoffeeTypeDaoImpl();
 //WebApplicationContext springContext = WebApplicationContextUtils.getWebApplicationContext(getServletContext());
 //    UserDao userDao =(UserDao)springContext.getBean("userDao");
 
-    @Autowired
-    public void setCoffeeTypeDao(CoffeeTypeDao coffeeTypeDao) {
-        this.coffeeTypeDao2 = coffeeTypeDao;
-    }
+//    @Autowired
+//    public void setCoffeeTypeDao(CoffeeTypeDao coffeeTypeDao) {
+//        this.coffeeTypeDao = coffeeTypeDao;
+//    }
 
 
 
 
     @Override
     public List<CoffeeType> getListCoffeeType(String[] count) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/spring-context.xml");
-        CoffeeTypeDao coffeeTypeDao = context.getBean(CoffeeTypeDao.class);
+//        ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/spring/spring-context.xml");
+//        CoffeeTypeDao coffeeTypeDao = context.getBean(CoffeeTypeDao.class);
         List<CoffeeType> list = coffeeTypeDao1.getList();
         for (int i = 0; i< list.size(); i++) {
             CoffeeType item = list.get(i);
@@ -73,8 +73,8 @@ public class CoffeeTypeServiceImpl implements CoffeeTypeService {
 
     @Override
     public List<CoffeeType> getListCoffeeOrder(List<CoffeeType> list, String[] checkbox) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/spring-context.xml");
-        CoffeeTypeDao coffeeTypeDao = context.getBean(CoffeeTypeDao.class);
+//        ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/spring-context.xml");
+//        CoffeeTypeDao coffeeTypeDao = context.getBean(CoffeeTypeDao.class);
         List<CoffeeType> list2=new ArrayList<>();
         if (checkbox!=null&&checkbox.length>0) {
             for (int i = 0; i < checkbox.length; i++) {
